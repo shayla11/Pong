@@ -33,6 +33,9 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0,0)
+ball.dx = 2     # d means delta or change, everytime
+ball.dy = -2     # the ball moves it will move up 2 and over 2
+
 
 # Function to move Paddles
 def paddle_a_up():
@@ -67,3 +70,24 @@ window.onkey(paddle_b_down, "Down")
 # Main Game loop
 while True:
      window.update()
+
+     # Move the Ball
+     ball.setx(ball.xcor() + ball.dx)
+     ball.sety(ball.ycor() + ball.dy)
+
+     # Border Check
+     if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1 # Reverses direction
+
+     if ball.ycor() < -290:
+         ball.sety(-290)
+         ball.dy *= -1
+
+     if ball.xcor() > 390:
+         ball.goto(0,0)
+         ball.dx *= -1
+
+     if ball.xcor() < -390:
+         ball.goto(0,0)
+         ball.dx *= -1
