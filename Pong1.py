@@ -45,10 +45,22 @@ def paddle_a_down():
      y -= 20
      paddle_a.sety(y)
 
+def paddle_b_up():
+     y = paddle_b.ycor()
+     y += 20
+     paddle_b.sety(y)
+
+def paddle_b_down():
+     y = paddle_b.ycor()
+     y -= 20
+     paddle_b.sety(y)
+
 # Keyboard Binding
 window.listen()
-window.onkey(paddle_a_up, "w") #Use "onkey" instead of "setonkeypress"
+window.onkey(paddle_a_up, "w") #Use "onkey" instead of "onkeypress"
 window.onkey(paddle_a_down, "s")
+window.onkey(paddle_b_up, "Up" ) #Up, Down, Left, Right are the arrow keys
+window.onkey(paddle_b_down, "Down")
 
 
 
