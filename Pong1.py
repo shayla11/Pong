@@ -8,6 +8,7 @@ window.bgcolor("black")
 window.setup(width=800, height=600)
 window.tracer(0)
 
+
 # Paddle A
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
@@ -35,6 +36,16 @@ ball.penup()
 ball.goto(0,0)
 ball.dx = 2     # d means delta or change, everytime
 ball.dy = -2     # the ball moves it will move up 2 and over 2
+
+# Pen
+pen = turtle.Turtle() #Just like turtle Tina
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0,260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24)) #No Type Parameter
+
 
 
 # Function to move Paddles
@@ -91,6 +102,13 @@ while True:
      if ball.xcor() < -390:
          ball.goto(0,0)
          ball.dx *= -1
+
      # Paddle + Ball Collision
-     if ball.xcor() > 340 and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+         ball.setx(340)
          ball.dx *= -1
+
+     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+         ball.setx(-340)
+         ball.dx *= -1
+
