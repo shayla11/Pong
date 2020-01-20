@@ -8,6 +8,11 @@ window.bgcolor("black")
 window.setup(width=800, height=600)
 window.tracer(0)
 
+# Score
+score_a = 0
+score_b = 0
+
+
 
 # Paddle A
 paddle_a = turtle.Turtle()
@@ -95,13 +100,21 @@ while True:
          ball.sety(-290)
          ball.dy *= -1
 
-     if ball.xcor() > 390:
+     if ball.xcor() > 390: # Ball goes off  Right Side
          ball.goto(0,0)
          ball.dx *= -1
+         score_a += 1
+         pen.clear()
+         pen.write("Player A: {}  Player B: {}".format(score_a,score_b), align="center", font=("Courier", 24))  # No Type Parameter
+         # The "{}" just mean when you use the format method those values, score_a and score_b will be places inside.
 
-     if ball.xcor() < -390:
+     if ball.xcor() < -390: # Ball goes off Left Side
          ball.goto(0,0)
          ball.dx *= -1
+         score_b += 1
+         pen.clear()
+         pen.write("Player A: {}  Player B: {}".format(score_a,score_b), align="center", font=("Courier", 24))  # No Type Parameter
+
 
      # Paddle + Ball Collision
      if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
