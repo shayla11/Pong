@@ -1,4 +1,5 @@
 # Simple Pong for beginners
+# Shayla Sexton
 
 import turtle
 import os
@@ -12,8 +13,6 @@ window.tracer(0)
 # Score
 score_a = 0
 score_b = 0
-
-
 
 # Paddle A
 paddle_a = turtle.Turtle()
@@ -83,7 +82,6 @@ window.onkey(paddle_b_up, "Up" ) #Up, Down, Left, Right are the arrow keys
 window.onkey(paddle_b_down, "Down")
 
 
-
 # Main Game loop
 while True:
      window.update()
@@ -108,7 +106,9 @@ while True:
          pen.clear()
          pen.write("Player A: {}  Player B: {}".format(score_a,score_b), align="center", font=("Courier", 24))  # No Type Parameter
          # The "{}" just mean when you use the format method those values, score_a and score_b will be places inside.
-         os.system("afplay point.mp3&") 
+         os.system("afplay point.mp3&")
+
+         # 'afplay' is required for mac systems to play sound files. The '&' sign at the end is included so the sound can play during the action.
 
      if ball.xcor() < -390: # Ball goes off Left Side
          ball.goto(0,0)
@@ -130,5 +130,3 @@ while True:
          ball.setx(-340)
          ball.dx *= -1
          os.system("afplay hit.mp3&")
-
-
