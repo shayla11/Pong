@@ -1,6 +1,7 @@
 # Simple Pong for beginners
 
 import turtle
+import os
 
 window = turtle.Screen()
 window.title("Pong by Shayla Sexton")
@@ -107,6 +108,7 @@ while True:
          pen.clear()
          pen.write("Player A: {}  Player B: {}".format(score_a,score_b), align="center", font=("Courier", 24))  # No Type Parameter
          # The "{}" just mean when you use the format method those values, score_a and score_b will be places inside.
+         os.system("afplay point.mp3&") 
 
      if ball.xcor() < -390: # Ball goes off Left Side
          ball.goto(0,0)
@@ -114,14 +116,19 @@ while True:
          score_b += 1
          pen.clear()
          pen.write("Player A: {}  Player B: {}".format(score_a,score_b), align="center", font=("Courier", 24))  # No Type Parameter
+         os.system("afplay point.mp3&")
+
 
 
      # Paddle + Ball Collision
      if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
          ball.setx(340)
          ball.dx *= -1
+         os.system("afplay hit.mp3&")
 
      if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
          ball.setx(-340)
          ball.dx *= -1
+         os.system("afplay hit.mp3&")
+
 
